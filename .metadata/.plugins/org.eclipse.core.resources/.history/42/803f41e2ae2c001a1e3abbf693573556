@@ -1,0 +1,15 @@
+
+public class Player {
+	
+	private String name;
+	private int age;
+	private int playerId;
+	private int clubId;
+	private int agentId;
+	private double value;
+	private String status;
+	private String position;
+	
+	
+
+}
