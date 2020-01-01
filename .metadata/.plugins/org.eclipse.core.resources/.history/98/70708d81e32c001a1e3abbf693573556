@@ -1,0 +1,8 @@
+
+public class Users {
+	
+	private String agentName;
+	private String Email;
+	private int agentId;
+
+}
