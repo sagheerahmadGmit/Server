@@ -80,7 +80,8 @@ class Connecthandler extends Thread {
 
 					do {
 						sendMessage("\nPress 1 to add a player" + "\nPress 2 to update a player's valuation"
-								+ "\nPress 3 to update a players status" + "\nPress 404 to exit\n");
+								+ "\nPress 3 to update a players status"
+								+ "\nPress 4 to exit\n");
 						message = (String) in.readObject();
 						agentChoice = Integer.parseInt(message);
 
@@ -111,58 +112,61 @@ class Connecthandler extends Thread {
 
 							sendMessage("\nPlease enter the player position: ");
 							player.setPosition((String) in.readObject());
-
+					
 							// add the player to the list
 							players.add(player);
-
+							
 							sendMessage(String.valueOf(players.size()));
-
+							
 							for (Player p : players) {
-								sendMessage("\nName: " + p.getName() + "\nAge: " + p.getAge() + "\nPlayer Id: "
-										+ p.getPlayerId() + "\nClub Id: " + p.getClubId() + "\nAgent Id: "
-										+ p.getAgentId() + "\nValuation: " + p.getValue() + "\nStatus: " + p.getStatus()
-										+ "\nPosition: " + p.getPosition());
+								sendMessage("\nName: " + p.getName() + "\nAge: " + p.getAge() + "\nPlayer Id: " + p.getPlayerId()
+								+ "\nClub Id: " + p.getClubId() + "\nAgent Id: " + p.getAgentId() + "\nValuation: " + p.getValue()
+								+ "\nStatus: " + p.getStatus() + "\nPosition: " + p.getPosition());
 							}
 
 						} else if (agentChoice == 2) {
 							sendMessage("Please enter the Id of the player you would like to update: ");
 							message = (String) in.readObject();
 							idCheck = Integer.parseInt(message);
-							String s = "Not Found";
-
+							
+							sendMessage(String.valueOf(players.size()));
+							
 							for (Player p : players) {
+								sendMessage("false");
 								if (idCheck == p.getPlayerId()) {
-									sendMessage("Found");
+									sendMessage("true");
 									sendMessage("\nPlease enter the new player valuation: ");
 									p.setValue(Double.parseDouble((String) in.readObject()));
-									s = "The Value has been updated to " + p.getValue();
+									sendMessage("\nValue Changed To: " + p.getValue());
+
+								}
+								else {
+									sendMessage("The Id does not exist!\n");
 								}
 							}
-
-							sendMessage(s);
 
 						} else if (agentChoice == 3) {
 							sendMessage("Please enter the Id of the player you would like to update: ");
 							message = (String) in.readObject();
 							idCheck = Integer.parseInt(message);
-							String s = "Not Found";
 
 							for (Player p : players) {
 								if (idCheck == p.getPlayerId()) {
-									sendMessage("Found");
+									sendMessage("true");
 									sendMessage("\nPlease enter the new player Status: ");
 									p.setStatus((String) in.readObject());
-									s = "The Status has been updated to " + p.getStatus();
+									sendMessage("\nStatus Changed To: " + p.getStatus());
+
+								} else {
+									sendMessage("The Id does not exist!\n");
 								}
 							}
-
-							sendMessage(s);
 
 						} else {
 							sendMessage("\nSelect one of the above options!!!: ");
 						}
 
-					} while (!message.equals("404"));
+					} while (!message.equals("4"));
 				} else {
 					sendMessage("\nSelect one of the above options!!!: ");
 				}

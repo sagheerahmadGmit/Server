@@ -152,7 +152,7 @@ class Connecthandler extends Thread {
 									sendMessage("Found");
 									sendMessage("\nPlease enter the new player Status: ");
 									p.setStatus((String) in.readObject());
-									s = "The Status has been updated to " + p.getStatus();
+									s = "The Value has been updated to " + p.getValue();
 								}
 							}
 

@@ -150,9 +150,9 @@ class Connecthandler extends Thread {
 							for (Player p : players) {
 								if (idCheck == p.getPlayerId()) {
 									sendMessage("Found");
-									sendMessage("\nPlease enter the new player Status: ");
-									p.setStatus((String) in.readObject());
-									s = "The Status has been updated to " + p.getStatus();
+									sendMessage("\nPlease enter the new player valuation: ");
+									p.setValue(Double.parseDouble((String) in.readObject()));
+									s = "The Value has been updated to " + p.getValue();
 								}
 							}
 
